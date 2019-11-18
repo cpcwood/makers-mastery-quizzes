@@ -14,3 +14,17 @@
 #   $ ruby question_1.rb
 #   It is certain
 
+num = rand(5) + 1
+
+case num
+when 1
+  puts 'It is certain'
+when 2
+  puts 'It is decidedly so'
+when 3
+  puts 'Ask again later'
+when 4
+  puts 'Outlook not so good'
+when 5
+  puts 'Very doubtful'
+end
