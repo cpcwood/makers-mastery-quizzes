@@ -6,4 +6,20 @@
 #     previous two Fibonacci numbers together e.g. the third Fibonacci
 #     number is the result of `0 + 1`.
 # * `puts`es these numbers, one per line.
+a = 0
+b = 1
+loop = 1
 
+while loop <= 20
+  if loop == 1
+    puts 0
+  elsif loop == 2
+    puts 1
+  else
+    c = a + b
+    puts c
+    a = b
+    b = c
+  end
+  loop += 1
+end
