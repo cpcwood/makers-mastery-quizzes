@@ -19,3 +19,10 @@
 # * Note: You can assume the user will only enter integers separated
 #   by commas with no spaces.
 
+puts 'Enter some numbers to graph'
+input = gets.chomp
+array = input.split(',')
+array.map do |n|
+  n.to_i.times { print "-" }
+  print "\n"
+end
