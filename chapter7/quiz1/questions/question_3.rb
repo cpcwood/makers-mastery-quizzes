@@ -62,5 +62,37 @@
 #   You survived!
 #   ```
 
+# Create river array
 river = "-----,--C--,CC-CC,CC-CC"
+river_array = river.split(',')
+defined_river = Array.new(4)
+4.times { |n| defined_river[n] = river_array[n].split('') }
+# Add player location
+p_loc = [0, 2]
 
+# Start the game
+while true
+  # Check if player has made it out alive
+  if p_loc[0] == 4 && p_loc[1] == 2
+    puts 'You survived!'
+    break
+  # Check is player is eaten by crocdile
+  elsif defined_river[p_loc[0]][p_loc[1]] == 'C'
+    puts 'You were eaten.'
+    break
+  end
+  # Print river
+  print_river = defined_river.map(&:clone)
+  print_river[p_loc[0]][p_loc[1]] = 'P'
+  4.times { |n| puts print_river[n].join('') }
+  # Move player down river & ask for user input
+  p_loc[0] += 1
+  puts 'Type left, right or neither'
+  input = gets.chomp
+  case input
+  when 'left'
+    p_loc[1] -= 1
+  when 'right'
+    p_loc[1] += 1
+  end
+end
