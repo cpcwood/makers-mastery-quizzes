@@ -33,7 +33,48 @@
 #   the user input.  You shouldn't need to enter any input manually.
 #   If the tests hang when you run them, it probably means your code
 #   doesn't work correctly, yet.
-# 
+#
 # * Note: To pass the tests, you'll need to `puts` exactly what's
 #   expected. Watch out for stray punctuation, capital letters, etc.
 
+def hall
+  while true
+    command = gets.strip
+    case command
+    when "look"
+      puts "You are standing in a hall with a marble floor. You see a door."
+    when "north"
+      outcome = study
+      if outcome == "quit"
+        puts "Bye!"
+        break
+      elsif outcome == "end"
+        break
+      end
+    when "quit"
+      puts "Bye!"
+      break
+    end
+  end
+end
+
+def study
+  while true
+    command = gets.strip
+    case command
+    when "south"
+      break
+    when "look"
+      puts "You are in a warm and cosy study. You see a safe. You see a desk."
+    when "look at desk"
+      puts "You see a piece of paper that reads, The combination is 2451."
+    when "enter combination 2451"
+      puts "You see some diamonds in the safe, pick them up and make your escape"
+      return "end"
+    when "quit"
+      return "quit"
+    end
+  end
+end
+
+hall

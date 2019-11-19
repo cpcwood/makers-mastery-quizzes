@@ -22,7 +22,31 @@
 #   the user input.  You shouldn't need to enter any input manually.
 #   If the tests hang when you run them, it probably means your code
 #   doesn't work correctly, yet.
-# 
+#
 # * Note: To pass the tests, you'll need to `puts` exactly what's
 #   expected. Watch out for stray punctuation, capital letters, etc.
+def passage
+  while true
+    command = gets.strip
+    if command == 'north'
+      puts "You are in a scary cave."
+      break
+    end
+  end
+end
 
+def cave
+  while true
+    command = gets.strip
+    if command == 'north'
+      print "You walk into sunlight."
+      break
+    elsif command == 'south'
+      puts "You are in a scary passage."
+      passage
+    end
+  end
+end
+
+passage
+cave
