@@ -36,3 +36,38 @@ people = [
   { "name" => "Will", "sport" => "cycling", "fruit" => "blackberry" }
 ]
 
+sport_hash = {}
+fruit_hash = {}
+
+people.each { |person|
+  name = person["name"]
+  sport = person["sport"]
+  fruit = person["fruit"]
+
+  if sport_hash[sport] == nil
+    sport_hash[sport] = [name]
+  else
+    sport_hash[sport].push(name)
+  end
+
+  if fruit_hash[fruit] == nil
+    fruit_hash[fruit] = [name]
+  else
+    fruit_hash[fruit].push(name)
+  end
+}
+
+puts "Enter what category to search"
+value = gets.chomp
+
+if value == 'sport'
+  sport_hash.each { |sport, persons|
+    puts sport
+    puts persons
+  }
+elsif value == 'fruit'
+  fruit_hash.each { |fruit, persons|
+    puts fruit
+    puts persons
+  }
+end
