@@ -30,3 +30,31 @@ people = [
   { "name" => "Will", "sport" => "cycling", "fruit" => "blackberry" }
 ]
 
+hash = {}
+
+people.each { |person|
+  name = person["name"]
+  sport = person["sport"]
+  fruit = person["fruit"]
+
+  if hash[sport] == nil
+    hash[sport] = [name]
+  else
+    hash[sport].push(name)
+  end
+
+  if hash[fruit] == nil
+    hash[fruit] = [name]
+  else
+    hash[fruit].push(name)
+  end
+}
+
+puts "Enter what category to search"
+gets.chomp
+puts "Enter what value to search for"
+value = gets.chomp
+
+unless hash[value] == nil
+  puts hash[value]
+end
