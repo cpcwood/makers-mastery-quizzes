@@ -59,3 +59,41 @@ def random_card
   cards[rand(13)]
 end
 
+def score(hand)
+  scores = { "two" => 2, "three" => 3, "four" => 4, "five" => 5, "six" => 6,
+    "seven" => 7, "eight" => 8, "nine" => 9, "ten" => 10, "jack" => 10,
+    "queen" => 10, "king" => 10, "ace" => 11 }
+  new_score = 0
+  hand.each { |card| new_score += scores[card] }
+  return new_score
+end
+
+def move
+  while true
+    puts "Please enter 'stick' or 'hit'"
+    value = gets.chomp
+    if value == 'stick'
+      return 'stick'
+    elsif value == 'hit'
+      return 'hit'
+    end
+  end
+end
+
+def run_game
+  hand = []
+  while true
+    move_taken = move
+    if move_taken == 'stick'
+      if score(hand) <= 21
+        puts "You scored: #{score(hand)}"
+      elsif score(hand) > 21
+        puts "You busted with: #{score(hand)}"
+      end
+      break
+    elsif move_taken == 'hit'
+      hand.push(random_card)
+      puts "Score so far: #{score(hand)}"
+    end
+  end
+end
